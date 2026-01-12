@@ -31,6 +31,15 @@ tracert.pack()
 nslookup = tk.Button(frame, text="ping", command=do_command)
 nslookup.pack()
 
+netstat = tk.Button(frame, text="ping", command=do_command)
+netstat.pack()
+
+# we already have a url http://wttr.in/
+curl = tk.Button(frame, text="ping", command=do_command)
+curl.pack()
+
+start = tk.Button(frame, text="ping", command=do_command)
+start.pack()
 
 # creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
