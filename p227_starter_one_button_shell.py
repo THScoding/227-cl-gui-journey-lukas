@@ -23,6 +23,15 @@ ping_btn.pack()
 ping_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("ping"))
 ping_btn.pack()
 
+# Sets up command button for tracert
+tracert = tk.Button(frame, text="ping", command=do_command)
+tracert.pack()
+
+# Sets up nslookup command button
+nslookup = tk.Button(frame, text="ping", command=do_command)
+nslookup.pack()
+
+
 # creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
 frame_URL.pack()
