@@ -30,12 +30,17 @@ def do_command(command):
             output_widget.update()
             
 MAIN_WINDOW= tk.Tk()
-Command_selection=tk.Frame()
+Command_selection=tk.Frame(MAIN_WINDOW, height=200, width= 50)
 Command_selection.pack()
 
+Command_ListBox = tk.Listbox(Command_selection, listvariable= )
 
 
-output=tk.Frame()
+
+Command_entries= tk.Frame(MAIN_WINDOW)
+Command_entries.pack()
+
+output=tk.Frame(MAIN_WINDOW)
 output.pack()
 
 output_widget=tksc.ScrolledText(output,height=10,width=100)
