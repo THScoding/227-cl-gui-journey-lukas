@@ -89,6 +89,7 @@ url_label = tk.Label(frame_URL, text="Enter a URL of interest: ",
     cursor="heart",
     fg="mediumpurple3",
     bg="black")
+
 url_label.pack(side=tk.LEFT)
 url_entry= tk.Entry(frame_URL,  font=("comic sans", 14)) # change font
 url_entry.pack(side=tk.LEFT)
