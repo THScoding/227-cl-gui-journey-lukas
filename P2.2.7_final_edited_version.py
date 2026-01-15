@@ -37,14 +37,17 @@ MAIN_WINDOW= tk.Tk()
 
 # Variable Configuration
 commandslist = ["ping", "tracert", "netstat", "curl", "start", "nslookup"]
-commandslistvar = tk.Variable(value=commandslist)
-
+countervar = 0
 ########
 
 Command_selection=tk.Frame(MAIN_WINDOW, height=200, width= 50)
 Command_selection.pack()
 
-Command_ListBox = tk.Listbox(Command_selection, listvariable= commandslistvar, height= 5)
+Command_ListBox = tk.Listbox(Command_selection, height= 5)
+while countervar <= len(commandslist):
+    Command_ListBox.insert(tk.END, commandslist[countervar])
+    countervar = countervar + 1
+    
 Command_ListBox.pack()
 
 commandslistindecies = Command_ListBox.curselection()
