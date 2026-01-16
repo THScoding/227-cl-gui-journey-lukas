@@ -112,12 +112,12 @@ progressbar.pack()
 #######
 
 Command_entries= tk.Frame(MAIN_WINDOW)
-Command_entries.pack(side="bottom")
+Command_entries.pack()
 
 url_entry = tk.Entry(Command_entries)
 url_entry.pack()
 
-output=tk.Frame(MAIN_WINDOW, )
+output=tk.Frame(MAIN_WINDOW)
 output.pack(side="bottom")
 
 output_widget=tksc.ScrolledText(output,height=10,width=100,)
