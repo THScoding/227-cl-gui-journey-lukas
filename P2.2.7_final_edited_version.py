@@ -39,7 +39,7 @@ def do_command():
         url_val = "::1"
 
     if curcommand == "curl":
-        with subprocess.Popen(curcommand + ' ' + url_val, stdout=subprocess.PIPE, bufsize=1, universal_newlines=True, encoding="utf-8",text= True, errors="replace") as p:
+        with subprocess.Popen(curcommand + ' ' + url_val, stdout=subprocess.PIPE, bufsize=1, universal_newlines=True, encoding= "utf-8",text= True, errors="replace") as p:
             for line in p.stdout:
                 output_widget.insert(tk.END,line)
                 output_widget.update()
@@ -86,7 +86,6 @@ Command_selection = tk.Frame(MAIN_WINDOW, height=200, width= 50)
 Command_selection.pack()
 
 Command_ListBox = tk.Listbox(Command_selection, height= 5)
-Command_ListBox.insert(tk.END, "nslookup")
 while countervar < len(commandslist):
     Command_ListBox.insert(tk.END, commandslist[countervar])
     countervar = countervar + 1
