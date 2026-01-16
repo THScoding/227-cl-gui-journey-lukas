@@ -1,4 +1,6 @@
 import subprocess
+import os
+import platform
 import tkinter as tk
 from tkinter import ttk
 import tkinter.scrolledtext as tksc
@@ -9,7 +11,7 @@ def do_command():
     global output_widget
     global commandslistindex
     progressbar["value"] = 15
-    
+    output_widget.delete("1.0",tk.END)
     if not Command_ListBox.curselection():
         return
     
@@ -61,29 +63,38 @@ def do_command():
                 output_widget.insert(tk.END,line)
                 output_widget.update()
                 progressbar.step()
-        
     else:
          with subprocess.Popen(curcommand + ' ' + url_val, stdout=subprocess.PIPE, bufsize=1, universal_newlines=True, encoding="utf-8",text= True, errors="ignore") as p:
             for line in p.stdout:
                 output_widget.insert(tk.END,line)
                 output_widget.update()
-                progressbar.step(5)
+                progressbar.step(10)
         
             
     progressbar["value"] = 100
     output_widget.insert(tk.END, "DONE")
     output_widget.update()
+    
+def mSave():
+  filename = asksaveasfilename(defaultextension='.txt',filetypes = (('Text files', '*.txt'),('Python files', '*.py *.pyw'),('All files', '*.*')))
+  if filename is None:
+    return
+  file = open (filename, mode = 'w')
+  text_to_save = output_widget.get("1.0", tk.END)
+  
+  file.write(text_to_save)
+  file.close()
             
 MAIN_WINDOW= tk.Tk()
 MAIN_WINDOW.title("THE PYTHON TERMINATOR")
 
 # Variable Configuration
-commandslist = ["ping", "tracert", "netstat", "Get Weather", "start", "nslookup"]
+commandslist = ["ping", "tracert", "netstat", "Get Weather", "nslookup", "curl"]
 countervar = 0
 ########
 
 Command_selection = tk.Frame(MAIN_WINDOW, height=200, width= 50)
-Command_selection.pack()
+Command_selection.pack(side="top")
 
 Command_ListBox = tk.Listbox(Command_selection, height= 5)
 while countervar < len(commandslist):
@@ -101,15 +112,18 @@ progressbar.pack()
 #######
 
 Command_entries= tk.Frame(MAIN_WINDOW)
-Command_entries.pack()
+Command_entries.pack(side="bottom")
 
 url_entry = tk.Entry(Command_entries)
 url_entry.pack()
 
-output=tk.Frame(MAIN_WINDOW)
-output.pack()
+output=tk.Frame(MAIN_WINDOW, )
+output.pack(side="bottom")
 
-output_widget=tksc.ScrolledText(output,height=10,width=100)
+output_widget=tksc.ScrolledText(output,height=10,width=100,)
 output_widget.pack()
+
+save = tk.Button(output, text="save", command=lambda:mSave())
+save.pack()
 
 MAIN_WINDOW.mainloop()
